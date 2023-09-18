@@ -12,7 +12,6 @@ class AppException implements Exception {
     if (e.response != null && DioExceptionType.badResponse == e.type) {
       if (e.response!.statusCode! >= 500) {
         final error = ErrorResponse(
-          status: false,
           message: Strings.serverError,
           data: data,
         );
@@ -21,7 +20,6 @@ class AppException implements Exception {
       }
     }
     return ErrorResponse(
-      status: false,
       data: data,
       message: _mapException(e.type),
     );

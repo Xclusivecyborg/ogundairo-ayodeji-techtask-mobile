@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tech_task/core/config/response/app_response.dart';
@@ -23,7 +21,6 @@ class BaseRepositoryImpl extends BaseRepository {
       return SucccessResponse(
         data: ingredients,
         message: "Success",
-        status: true,
       );
     } on DioException catch (e) {
       return AppException.handleException(e);
@@ -42,7 +39,6 @@ class BaseRepositoryImpl extends BaseRepository {
       return SucccessResponse(
         data: recipes,
         message: "Success",
-        status: true,
       );
     } on DioException catch (e) {
       return AppException.handleException(e);
@@ -50,7 +46,7 @@ class BaseRepositoryImpl extends BaseRepository {
   }
 }
 
-final baseRepositoryProvider = Provider((ref) {
+final baseRepositoryProvider = Provider<BaseRepository>((ref) {
   final dio = Dio();
   dio.options.baseUrl = AppUrls.baseUrl;
   return BaseRepositoryImpl(dio);

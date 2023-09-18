@@ -1,11 +1,11 @@
-
-
-
-
 import 'package:flutter/material.dart';
 
 class IngredientsPage extends StatefulWidget {
-  const IngredientsPage({super.key});
+  const IngredientsPage({
+    super.key,
+    required this.selectedDate,
+  });
+  final DateTime selectedDate;
 
   @override
   State<IngredientsPage> createState() => _IngredientsPageState();
