@@ -11,7 +11,13 @@ Tech task is a mobile app that allows you get recipes based on your preferred ch
 
 - To run tests please head over to the github actions tab on github, or run the tests locally with the command [flutter test]
 
+## What To Expect
+
+![ios_recipe](https://github.com/Xclusivecyborg/ogundairo-ayodeji-techtask-mobile/assets/80969540/e8490708-738e-4211-9f0f-89775e1b0f5a)
+![android_recipe](https://github.com/Xclusivecyborg/ogundairo-ayodeji-techtask-mobile/assets/80969540/4f010d6f-44c1-47e4-906f-9fe5652779d0)
+
 # Mobile Technical Task
+
 
 Apps for Lunch Recipes Suggestion
 
