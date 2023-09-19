@@ -31,9 +31,8 @@ class _CustomPlatformDatePickerState extends State<CustomPlatformDatePicker> {
             lastDate: DateTime.now(),
           ).then((value) {
             if (value != null) initialDate = value;
-            setState(() {
-              isPickingDate = !isPickingDate;
-            });
+            widget.onDateChanged(initialDate);
+            setState(() {});
           });
           return;
         }
