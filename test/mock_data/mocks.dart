@@ -1,4 +1,7 @@
+import 'package:mocktail/mocktail.dart';
+import 'package:tech_task/domain/repository/base_repository.dart';
 
+class MockBaseRepository extends Mock implements BaseRepository {}
 
 class MockData {
   static List<Map<String, dynamic>> ingredientsResponse = [

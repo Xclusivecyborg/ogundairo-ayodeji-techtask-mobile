@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_task/core/utils/extensions.dart';
 import 'package:tech_task/features/home/presentation/widgets/custom_platform_date_picker.dart';
 import 'package:tech_task/features/ingredients/presentation/ingredients_page.dart';
 
@@ -59,11 +60,9 @@ class _HomePageState extends State<HomePage> {
                         child: ElevatedButton(
                           onPressed: () => Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => IngredientsPage(
-                                selectedDate: selectedDate,
-                              ),
-                            ),
+                            IngredientsPage(
+                              selectedDate: selectedDate,
+                            ).slideRoute(),
                           ),
                           child: Text(
                             'Tap to Get Ingredients',
