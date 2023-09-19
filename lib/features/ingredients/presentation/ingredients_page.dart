@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tech_task/core/utils/enums.dart';
 import 'package:tech_task/core/utils/extensions.dart';
+import 'package:tech_task/core/utils/strings.dart';
 import 'package:tech_task/features/ingredients/data/models/ingredient_model.dart';
 import 'package:tech_task/features/ingredients/presentation/notifier/ingredients_notifier.dart';
 import 'package:tech_task/features/ingredients/presentation/widgets/ingredient_tile.dart';
@@ -41,10 +42,11 @@ class _IngredientsPageState extends ConsumerState<IngredientsPage> {
           child: switch (loadState) {
             LoadState.loading =>
               const Center(child: CircularProgressIndicator.adaptive()),
-            LoadState.error => Center(child: Text(error ?? 'Error')),
+            LoadState.error =>
+              Center(child: Text(error ?? Strings.genericErrorMessage)),
             _ => Column(
                 children: [
-                  GeneralAppBar(title: 'Ingredients'),
+                  GeneralAppBar(title: Strings.ingredients),
                   _getIngredientsView(ingredients),
                 ],
               ),
@@ -59,6 +61,7 @@ class _IngredientsPageState extends ConsumerState<IngredientsPage> {
   Expanded _getIngredientsView(List<Ingredient> ingredients) {
     return Expanded(
       child: ListView.separated(
+        key: Key(Strings.ingredientsList),
         padding: EdgeInsets.only(bottom: 100),
         separatorBuilder: (context, index) => const SizedBox(
           height: 30,
@@ -70,6 +73,7 @@ class _IngredientsPageState extends ConsumerState<IngredientsPage> {
                   .inDays <
               0;
           return IngredientTile(
+            key: ValueKey(ingredients[index].title),
             ingredient: ingredients[index],
             isAvailable: isAvailable,
           );
@@ -100,7 +104,7 @@ class _IngredientsPageState extends ConsumerState<IngredientsPage> {
               );
             },
             child: Text(
-              'Tap to get Recipes',
+              Strings.tapTogetRecipes,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: isEnabled ? Colors.black : Colors.white,
                   ),

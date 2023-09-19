@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tech_task/core/utils/enums.dart';
+import 'package:tech_task/core/utils/strings.dart';
 import 'package:tech_task/features/ingredients/presentation/notifier/ingredients_notifier.dart';
 import 'package:tech_task/features/recipes/data/models/recipe_model.dart';
 import 'package:tech_task/features/recipes/presentation/widgets/recipe_tile.dart';
@@ -17,12 +18,15 @@ class _RecipesPageState extends ConsumerState<RecipesPage> {
   @override
   void initState() {
     super.initState();
-    ref.read(ingredientsNotifier.notifier).getRecipes();
+    WidgetsBinding.instance.addPostFrameCallback((v) {
+      ref.read(ingredientsNotifier.notifier).getRecipes();
+    });
   }
 
   Expanded _getRecipesView(List<Recipe> recipes) {
     return Expanded(
       child: ListView.separated(
+        key: Key(Strings.recipesList),
         padding: EdgeInsets.only(bottom: 100),
         separatorBuilder: (context, index) => const SizedBox(
           height: 30,
@@ -52,10 +56,11 @@ class _RecipesPageState extends ConsumerState<RecipesPage> {
           child: switch (loadState) {
             LoadState.loading =>
               const Center(child: CircularProgressIndicator.adaptive()),
-            LoadState.error => Center(child: Text(error ?? 'Error')),
+            LoadState.error =>
+              Center(child: Text(error ?? Strings.genericErrorMessage)),
             _ => Column(
                 children: [
-                  GeneralAppBar(title: 'Recipes'),
+                  GeneralAppBar(title: Strings.recipes),
                   _getRecipesView(recies),
                 ],
               ),

@@ -37,7 +37,7 @@ void main() {
 
       final response = await _baseRepository.getIngredients();
       expect(response, isA<SucccessResponse<List<Ingredient>>>());
-      expect(response.data?.length, 2);
+      expect(response.data?.length, 3);
     });
     test('''Test that status code of 500 returns server error message
      Test that response is of type ErrorResponse<List<Ingredient>>''',

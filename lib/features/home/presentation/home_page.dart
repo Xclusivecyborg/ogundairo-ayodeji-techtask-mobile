@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_task/core/utils/extensions.dart';
+import 'package:tech_task/core/utils/strings.dart';
 import 'package:tech_task/features/home/presentation/widgets/custom_platform_date_picker.dart';
 import 'package:tech_task/features/ingredients/presentation/ingredients_page.dart';
 
@@ -22,10 +23,7 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: [
             Positioned.fill(
-              child: Image.asset(
-                'assets/images/recipe.jpg',
-                fit: BoxFit.fill,
-              ),
+              child: Image.asset('assets/images/recipe.jpg', fit: BoxFit.fill),
             ),
             SafeArea(
               child: Center(
@@ -47,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(height: 20),
                     CustomPlatformDatePicker(
+                      key: Key(Strings.datePicker),
                       onDateChanged: (date) {
                         selectedDate = date;
                       },
@@ -58,6 +57,7 @@ class _HomePageState extends State<HomePage> {
                         width: MediaQuery.sizeOf(context).width * 0.8,
                         height: MediaQuery.sizeOf(context).height * 0.07,
                         child: ElevatedButton(
+                          key: Key(Strings.ingredientsButton),
                           onPressed: () => Navigator.push(
                             context,
                             IngredientsPage(
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                             ).slideRoute(),
                           ),
                           child: Text(
-                            'Tap to Get Ingredients',
+                            Strings.tapTogetIngredients,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tech_task/core/utils/extensions.dart';
+import 'package:tech_task/core/utils/strings.dart';
 import 'package:tech_task/features/ingredients/data/models/ingredient_model.dart';
 import 'package:tech_task/features/ingredients/presentation/notifier/ingredients_notifier.dart';
 import 'package:tech_task/presentation/general_widgets/animated_tile_holder.dart';
@@ -28,7 +29,7 @@ class IngredientTile extends ConsumerWidget {
             SnackBar(
               duration: Duration(seconds: 1),
               content: Text(
-                'Ingredient is not available',
+                Strings.ingredientUnavailable,
                 style: Theme.of(context)
                     .textTheme
                     .titleLarge

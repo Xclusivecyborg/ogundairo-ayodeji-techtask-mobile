@@ -7,11 +7,15 @@ class MockData {
   static List<Map<String, dynamic>> ingredientsResponse = [
     {
       'title': 'Cheese',
-      'use-by': '1997-11-11',
+      'use-by': '2023-11-11',
     },
     {
       'title': 'Ham',
-      'use-by': '1997-10-10',
+      'use-by': '2023-10-10',
+    },
+    {
+      'title': 'Burger',
+      'use-by': '2020-10-10',
     },
   ];
 
